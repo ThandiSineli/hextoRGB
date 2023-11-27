@@ -6,6 +6,9 @@ function updateColor() {
 
     const hexColor = rgbToHex(red, green, blue);
     document.getElementById('hex').innerText = hexColor;
+
+    // Apply the color to the background for visual representation
+    document.body.style.backgroundColor = hexColor;
 }
 
 // Function to convert RGB to Hex
@@ -14,13 +17,14 @@ function rgbToHex(r, g, b) {
 }
 
 function componentToHex(c) {
-    const hex = c.toString(16);
+    const hex = Number(c).toString(16);
     return hex.length === 1 ? '0' + hex : hex;
 }
 
+// Attach event listeners to update color on input change
 document.getElementById('red').addEventListener('input', updateColor);
 document.getElementById('green').addEventListener('input', updateColor);
 document.getElementById('blue').addEventListener('input', updateColor);
 
-
+// Initial color update when the page loads
 updateColor();
